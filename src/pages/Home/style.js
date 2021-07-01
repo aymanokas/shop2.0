@@ -1,5 +1,6 @@
 export default {
   homeContainer: {
-    backgroundColor: '#daedff'
+    backgroundColor: '#daedff',
+    paddingBottom: 190
   }
 }
