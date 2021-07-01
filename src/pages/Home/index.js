@@ -1,3 +1,4 @@
 import React from 'react'
+import NavBar from '../../components/NavBar'
 
-export default _ => <h1>Hoooome</h1>
+export default _ => <NavBar />
