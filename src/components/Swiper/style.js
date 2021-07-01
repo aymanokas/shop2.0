@@ -1,50 +1,44 @@
 export default {
-  navbarContainer: {
+  container: {
     width: '100%',
-    height: 89,
+    height: 580,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderBottom: '1px solid #cecece'
+    backgroundColor: '#daedff'
   },
-  callusStyle: {
-    color: '#555252',
-    letterSpacing: '.8px',
-    fontSize: 14,
-    fontWeight: '400'
-  },
-  logoStyle: {
-    width: 103,
-    height: 26,
-    marginLeft: 118
-  },
-  iconStyle: {
-    width: 23,
-    height: 23,
-    marginRight: 12
-  },
-  iconsContainerStyle: {
-    width: 230,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between'
-  },
-  tabsBar: {
-    width: '100%',
-    height: 55,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  tab: {
+  productType: {
     color: '#000',
     letterSpacing: '.8px',
-    fontSize: 15,
-    cursor: 'pointer',
-    margin: '0 12px 0 12px',
-    fontWeight: '600',
+    fontSize: 16,
+    fontWeight: '500'
+  },
+  productTitle: {
+    color: '#000',
+    letterSpacing: '.8px',
+    fontSize: 48,
+    fontWeight: '500',
+    marginTop: 12,
+    marginBottom: 16
+  },
+  productThumbnail: {
+    width: 450
+  },
+  productTitleContainer: {
+    width: 570
+  },
+  shopButtonStyle: {
+    width: 189,
+    height: 56,
+    borderRadius: 0,
+    border: '1px #000 solid',
+    color: '#000',
+    backgroundColor: '#ffffff00',
+    boxShadow: 'inset 0 0 0 0 #a749ff',
+    transition: 'ease-out 0.4s',
     '&:hover': {
-      color: '#a749ff'
+      color: '#fff',
+      boxShadow: 'inset 400px 0 0 #a749ff'
     }
   }
 }
