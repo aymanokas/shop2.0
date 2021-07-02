@@ -13,7 +13,7 @@ export default {
     height: 230,
     width: '45%',
     backgroundImage: 'url("https://flone.reactdemo.hasthemes.com/assets/img/banner/banner-8.png")',
-    paddingTop: 50, 
+    paddingTop: 50,
     paddingLeft: 24,
     paddingBottom: 30,
     backgroundSize: '100%',

@@ -4,6 +4,8 @@ import Swiper from '../../components/Swiper'
 import Categories from '../../components/Categories'
 import AboutUs from '../../components/AboutUs'
 import FlashBanners from '../../components/FlashBanners'
+import Tabs from '../../components/Tabs'
+import Product from '../../components/Product'
 import style from './style'
 import { makeStyles } from '@material-ui/core'
 const useStyle = makeStyles(style)
@@ -20,6 +22,8 @@ export default _ => {
       <div className={aboutUsContainer}>
         <AboutUs />
       </div>
+      <Tabs />
+      <Product />
       <div className={flashBannersContainer}>
         <FlashBanners />
       </div>

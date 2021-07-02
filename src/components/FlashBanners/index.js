@@ -7,7 +7,7 @@ import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt'
 const useStyle = makeStyles(style)
 
 export default () => {
-  const { root, paper, title, price, leftContainer, rightContainer, iconStyle } = useStyle()
+  const { root, paper, title, price, leftContainer, iconStyle } = useStyle()
 
   return (
     <Container>
