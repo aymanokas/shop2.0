@@ -5,9 +5,6 @@ export default {
     alignItems: 'center',
     justifyContent: 'center'
   },
-  smallHeader: {
-
-  },
   header: {
     fontSize: 30,
     fontWeight: 'bold',
@@ -24,6 +21,5 @@ export default {
     textAlign: 'center',
     maxWidth: '70%',
     lineHeight: 2
-
   }
 }

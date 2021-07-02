@@ -3,7 +3,11 @@ export default {
     backgroundColor: '#daedff',
     paddingBottom: 190
   },
-  aboutUsStyle: {
+  aboutUsContainer: {
     marginTop: 60
+  },
+  flashBannersContainer: {
+    marginTop: 60,
+    marginBottom: 60
   }
 }
