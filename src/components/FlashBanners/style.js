@@ -20,6 +20,7 @@ export default {
     transition: 'all .7s',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    cursor: 'pointer',
     '&:hover': {
       transition: 'all .5s',
       backgroundSize: '110%'
@@ -40,6 +41,7 @@ export default {
   iconStyle: {
     color: '#915342',
     border: '2px solid #915342',
-    borderRadius: 50
+    borderRadius: 50,
+    cursor: 'pointer'
   }
 }
