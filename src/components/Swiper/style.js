@@ -35,6 +35,7 @@ export default {
     color: '#000',
     backgroundColor: '#ffffff00',
     boxShadow: 'inset 0 0 0 0 #a749ff',
+    fontFamily: '"Poppins", sans-serif',
     transition: 'ease-out 0.4s',
     '&:hover': {
       color: '#fff',

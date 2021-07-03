@@ -13,7 +13,7 @@ export default {
     fontSize: 18,
     cursor: 'pointer',
     margin: '0 18px 0 18px',
-    fontWeight: '600',
+    fontFamily: '"Poppins", sans-serif',
     transition: 'all .4s ease 0s',
     '&:hover': {
       color: '#000'
@@ -25,6 +25,6 @@ export default {
     fontSize: 18,
     cursor: 'pointer',
     margin: '0 18px 0 18px',
-    fontWeight: '600'
+    fontFamily: '"Poppins", sans-serif'
   }
 }

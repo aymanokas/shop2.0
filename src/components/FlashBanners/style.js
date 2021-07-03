@@ -28,7 +28,8 @@ export default {
   },
   title: {
     fontSize: 48,
-    color: '#915342'
+    color: '#915342',
+    fontFamily: '"Poppins", sans-serif'
   },
   leftContainer: {
     display: 'flex',

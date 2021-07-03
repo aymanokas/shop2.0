@@ -11,7 +11,7 @@ export default {
     color: '#555252',
     letterSpacing: '.8px',
     fontSize: 14,
-    fontWeight: '400'
+    fontFamily: '"Poppins", sans-serif'
   },
   logoStyle: {
     width: 103,
@@ -42,7 +42,7 @@ export default {
     fontSize: 15,
     cursor: 'pointer',
     margin: '0 12px 0 12px',
-    fontWeight: '600',
+    fontFamily: '"Poppins", sans-serif',
     '&:hover': {
       color: '#a749ff'
     }
