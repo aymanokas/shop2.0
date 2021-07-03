@@ -65,6 +65,16 @@ export default {
     color: '#000',
     letterSpacing: '.8px',
     fontSize: 14,
+    display: 'inline-flex',
+    cursor: 'pointer',
+    fontFamily: '"Poppins", sans-serif'
+  },
+  discoutedPrice: {
+    color: '#8e8e8e',
+    textDecoration: 'line-through',
+    letterSpacing: '.8px',
+    display: 'inline-flex',
+    fontSize: 14,
     cursor: 'pointer',
     fontFamily: '"Poppins", sans-serif'
   },
