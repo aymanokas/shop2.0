@@ -16,9 +16,6 @@ export default {
     alignItems: 'flex-start',
     flexDirection: 'column'
   },
-  copyright: {
-    fontSize: 14
-  },
   title: {
     fontSize: 16,
     marginBottom: 16,
@@ -37,7 +34,7 @@ export default {
   },
   copyright: {
     color: '#313131',
-    fontSize: 12
+    fontSize: 14
   },
   watermark: {
     width: '100%',
