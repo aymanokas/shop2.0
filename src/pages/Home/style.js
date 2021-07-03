@@ -9,5 +9,8 @@ export default {
   flashBannersContainer: {
     marginTop: 60,
     marginBottom: 60
+  },
+  footerContainer: {
+    marginTop: 60
   }
 }

@@ -8,10 +8,12 @@ import Tabs from '../../components/Tabs'
 import Product from '../../components/Product'
 import style from './style'
 import { makeStyles } from '@material-ui/core'
-const useStyle = makeStyles(style)
-export default _ => {
-  const { homeContainer, aboutUsContainer, flashBannersContainer } = useStyle()
+import Footer from '../../components/Footer'
 
+const useStyle = makeStyles(style)
+
+export default _ => {
+  const { homeContainer, aboutUsContainer, flashBannersContainer, footerContainer } = useStyle()
   return (
     <>
       <div className={homeContainer}>
@@ -26,6 +28,9 @@ export default _ => {
       <Product />
       <div className={flashBannersContainer}>
         <FlashBanners />
+      </div>
+      <div className={footerContainer}>
+        <Footer />
       </div>
     </>
   )
