@@ -2,7 +2,7 @@ export default {
   productContainer: {
     maxWidth: '25%',
     height: 400,
-    width: 'calc(100% * (1/4) - 10px - 1px)',
+    width: 'calc(100% * (1/4) - 10px - 0.5px - 0.5px)',
     flex: '1 0 22%',
     display: 'flex',
     flexDirection: 'column',
@@ -33,7 +33,7 @@ export default {
     display: 'flex',
     backgroundImage: 'url("https://flone.reactdemo.hasthemes.com/assets/img/product/electronics/5.jpg")',
     overflow: 'hidden',
-    alignItems: 'end',
+    alignItems: 'flex-end',
     backgroundSize: '100%',
     transition: 'all .7s',
     backgroundRepeat: 'no-repeat',
