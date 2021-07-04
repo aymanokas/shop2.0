@@ -7,6 +7,7 @@ import { ConnectedRouter } from 'connected-react-router'
 import { history } from '../store'
 import Home from '../pages/Home'
 import Product from '../pages/Product'
+import Wishlist from '../pages/Whishlist'
 
 export default () => {
   return (
@@ -18,6 +19,9 @@ export default () => {
         <Route exact path={ProductPath}>
           <Product />
         </Route>
+        <Route exact path={WishlistPath}>
+          <Wishlist />
+        </Route>
       </Switch>
     </ConnectedRouter>
   )
@@ -25,3 +29,4 @@ export default () => {
 
 export const HomePath = '/'
 export const ProductPath = '/Product'
+export const WishlistPath = '/Wishlist'
