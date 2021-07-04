@@ -11,7 +11,7 @@ import LocalMallIcon from '@material-ui/icons/LocalMall'
 const useStyle = makeStyles(theme => style(theme))
 const logo = 'https://flone.reactdemo.hasthemes.com/assets/img/logo/logo.png'
 export default () => {
-  const { callusStyle, tabsBar, tab, navbarContainer, iconStyle, iconsContainerStyle, logoStyle, search, searchIcon, inputRoot, inputInput  } = useStyle()
+  const { callusStyle, tabsBar, tab, navbarContainer, iconStyle, iconsContainerStyle, logoStyle, search, searchIcon, inputRoot, inputInput } = useStyle()
   const [anchorEl, setAnchorEl] = React.useState(null)
   const handleClick = (event) => setAnchorEl(event.currentTarget)
   const handleClose = () => setAnchorEl(null)
@@ -26,17 +26,17 @@ export default () => {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search…"
+              placeholder='Search…'
               classes={{
                 root: inputRoot,
-                input: inputInput,
+                input: inputInput
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
           <AccountCircleIcon className={iconStyle} onClick={handleClick} />
           <Menu
-            id="simple-menu"
+            id='simple-menu'
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
@@ -46,10 +46,10 @@ export default () => {
             <MenuItem onClick={handleClose}>Login</MenuItem>
             <MenuItem onClick={handleClose}>My Account</MenuItem>
           </Menu>
-          <Badge badgeContent={4} color="primary">
+          <Badge badgeContent={4} color='primary'>
             <FavoriteBorderIcon className={iconStyle} />
           </Badge>
-          <Badge badgeContent={4} color="primary">
+          <Badge badgeContent={4} color='primary'>
             <LocalMallIcon className={iconStyle} />
           </Badge>
         </div>
