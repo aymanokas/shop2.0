@@ -8,4 +8,3 @@ export const reducer = (state = initialState, { type, data }) => {
       return state
   }
 }
-
