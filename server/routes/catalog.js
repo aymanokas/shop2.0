@@ -17,7 +17,6 @@ product.get('/getCatalog', async (req, res) => {
   query += '}'
   if (search) query += `&filter=${search}`
   query += '&totals=true'
-  console.log(query)
   const result = await fetch(query, {
     method: 'get',
     headers: {
@@ -26,7 +25,6 @@ product.get('/getCatalog', async (req, res) => {
     }
   })
   const json = await result.json()
-  console.log(json)
   if (json && json.data) return res.send({ count: json.totals.count, data: json.data })
   else return res.send({ count: 0, data: [] })
 })
