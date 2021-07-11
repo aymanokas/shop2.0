@@ -7,14 +7,18 @@ import InputBase from '@material-ui/core/InputBase'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import LocalMallIcon from '@material-ui/icons/LocalMall'
+import { useDispatch } from 'react-redux'
+import { push } from 'connected-react-router'
 
 const useStyle = makeStyles(theme => style(theme))
 const logo = 'https://flone.reactdemo.hasthemes.com/assets/img/logo/logo.png'
 export default () => {
   const { callusStyle, tabsBar, tab, navbarContainer, iconStyle, iconsContainerStyle, logoStyle, search, searchIcon, inputRoot, inputInput } = useStyle()
+  const dispatch = useDispatch()
   const [anchorEl, setAnchorEl] = React.useState(null)
   const handleClick = (event) => setAnchorEl(event.currentTarget)
   const handleClose = () => setAnchorEl(null)
+  const handleWhishlistRoute = () => dispatch(push('/Wishlist'))
   return (
     <Container>
       <div className={navbarContainer}>
