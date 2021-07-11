@@ -6,8 +6,10 @@ const product = express.Router()
 product.get('/getCatalog', async (req, res) => {
   const { take, skip, orderby, orderAsc, tagId, categoryId, search } = req.query
   let query = `${BASE_URL}/products`
-  if (tagId) query += `?q={"tags":{"_id":"${tagId}"}}`
-  // if (tagId || categoryId) query += `/${tagId || categoryId}?referencedby=true`
+  if (tagId || categoryId)query += '?q={'
+  if (tagId) query += `"tags":[{"_id":"${tagId}"}]`
+  if (categoryId) query += `${tagId !== undefined ? ',' : ''}"categories":[{"_id":"${categoryId}"}]`
+  if (tagId || categoryId) query += '}'
   if (take) query += `${tagId || categoryId ? '&' : '?'}h={"$max":${take}`
   if (skip) query += `,"$skip":${skip}`
   if (orderby) query += `,"$orderby":{"${orderby}":${orderAsc !== undefined ? 1 : -1}}`
