@@ -18,6 +18,11 @@ export default {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f7f7f7'
+    backgroundColor: '#f2f2f2',
+    boxShadow: 'none',
+    '&:hover': {
+      backgroundColor: '#a749ff',
+      color: 'white'
+    }
   }
 }
