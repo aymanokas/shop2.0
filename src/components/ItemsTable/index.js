@@ -14,8 +14,7 @@ const config = ({ thumbnail, rowText }) => ({
       flex: 2,
       renderCell: (params) => (
         <>
-          <img src={params.row.Photo} alt='thumbnail' className={thumbnail} />
-          {params.value}
+          <img src={params.value} alt='thumbnail' className={thumbnail} />
         </>
       )
     },
@@ -51,10 +50,12 @@ export default ({ data }) => {
   return (
     <Container>
       <Typography className={title}>Your wishlist items</Typography>
-       <DataTable
-          config={{ ...config({ thumbnail, rowText }), rows: data }}
-          pageSize={10}
-          rowCount={data.length}
+      <DataTable
+        config={{ ...config({ thumbnail, rowText }), rows: data }}
+        pageSize={data.length}
+        rowCount={data.length}
+        headerHeight={90}
+        hideFooter
           clickable
           rowHeight={180}
           rowsPerPage={[10, 25, 50, 100]}

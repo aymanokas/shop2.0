@@ -11,11 +11,17 @@ const CustomNoRowsOverlay = ({ noRowsMessage }) => {
     </GridOverlay>
   )
 }
-export default ({ config, pageSize, handleRowClick, clickable, rowsPerPage, handleSort, handlePageChange, rowCount, rowHeight, noRowsMessage, onPageSizeChange }) => {
+export default ({ config, pageSize, handleRowClick, clickable, rowsPerPage, handleSort, handlePageChange, rowCount, rowHeight, noRowsMessage, onPageSizeChange, headerHeight, hideFooter}) => {
   const { root } = useStyles({ clickable })
   return (
     <DataGrid
       autoHeight
+      showColumnRightBorder={false}
+      showCellRightBorder={false}
+      showColumnRightBorder={false}
+      autoPageSize
+      hideFooter={hideFooter}
+      headerHeight={headerHeight}
       className={root}
       rows={config.rows}
       rowsPerPageOptions={rowsPerPage}

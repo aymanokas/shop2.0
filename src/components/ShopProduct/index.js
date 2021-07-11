@@ -9,7 +9,6 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 const useStyle = makeStyles(style)
 export default () => {
   const { productImage, badges, product, discountAmount, lineDividerStyle, sizes, specsInfo, sectionTitle, relatedTitle, relatedSectionContainer, productSmallImagesSlider, productSmallImage, addToCartSection, radioContainer, iconStyle, shopButtonStyle, dividerStyle, meduimRadio, blueRadio, yellowRadio, productDescription, isNew, productControls, productDicountedPrice, productTitle, titleAndPrice, productPrice } = useStyle()
-
   return (
     <Container>
       <div className={product}>
