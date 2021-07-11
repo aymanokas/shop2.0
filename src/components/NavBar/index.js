@@ -9,15 +9,19 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import LocalMallIcon from '@material-ui/icons/LocalMall'
 import { useDispatch } from 'react-redux'
 import { push } from 'connected-react-router'
+import CartMenu from '../CartMenu'
 
 const useStyle = makeStyles(theme => style(theme))
 const logo = 'https://flone.reactdemo.hasthemes.com/assets/img/logo/logo.png'
 export default () => {
   const { callusStyle, tabsBar, tab, navbarContainer, iconStyle, iconsContainerStyle, logoStyle, search, searchIcon, inputRoot, inputInput } = useStyle()
   const dispatch = useDispatch()
-  const [anchorEl, setAnchorEl] = React.useState(null)
-  const handleClick = (event) => setAnchorEl(event.currentTarget)
-  const handleClose = () => setAnchorEl(null)
+  const [anchorAccount, setAnchorAccount] = React.useState(null)
+  const handleAccountClick = (event) => setAnchorAccount(event.currentTarget)
+  const handleAccountClose = () => setAnchorAccount(null)
+  const [anchorCart, setAnchorCart] = React.useState(null)
+  const handleCartClick = (event) => setAnchorCart(event.currentTarget)
+  const handleCartClose = () => setAnchorCart(null)
   const handleWhishlistRoute = () => dispatch(push('/Wishlist'))
   return (
     <Container>
@@ -38,24 +42,33 @@ export default () => {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          <AccountCircleIcon className={iconStyle} onClick={handleClick} />
+          <AccountCircleIcon className={iconStyle} onClick={handleAccountClick} />
           <Menu
             id='simple-menu'
-            anchorEl={anchorEl}
+            anchorEl={anchorAccount}
             keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
+            open={Boolean(anchorAccount)}
+            onClose={handleAccountClose}
           >
-            <MenuItem onClick={handleClose}>Register</MenuItem>
-            <MenuItem onClick={handleClose}>Login</MenuItem>
-            <MenuItem onClick={handleClose}>My Account</MenuItem>
+            <MenuItem onClick={handleAccountClose}>Register</MenuItem>
+            <MenuItem onClick={handleAccountClose}>Login</MenuItem>
+            <MenuItem onClick={handleAccountClose}>My Account</MenuItem>
           </Menu>
           <Badge badgeContent={4} color='primary'>
-            <FavoriteBorderIcon className={iconStyle} />
+            <FavoriteBorderIcon className={iconStyle} onClick={handleWhishlistRoute}/>
           </Badge>
           <Badge badgeContent={4} color='primary'>
-            <LocalMallIcon className={iconStyle} />
+            <LocalMallIcon className={iconStyle} onClick={handleCartClick}/>
           </Badge>
+          <Menu
+            id='simple-menu'
+            anchorEl={anchorCart}
+            keepMounted
+            open={Boolean(anchorCart)}
+            onClose={handleCartClose}
+          >
+            <CartMenu />
+          </Menu>
         </div>
       </div>
       <div className={tabsBar}>
