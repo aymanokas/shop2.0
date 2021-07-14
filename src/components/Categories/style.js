@@ -9,21 +9,32 @@ export default {
   },
   productCount: {
     color: '#000',
+    position: 'absolute',
     letterSpacing: '.8px',
+    top: 270,
     fontSize: 14,
     fontWeight: '400'
   },
   titleStyle: {
     color: '#000',
     letterSpacing: '.8px',
+    position: 'absolute',
+    top: 250,
     fontSize: 16,
     fontWeight: '400'
   },
   thumbnail: {
-    width: 300
+    width: 300,
+    transition: 'all .7s',
+    '&:hover': {
+      transition: 'all .5s',
+      width: 350
+    }
   },
   categorie: {
+    cursor: 'pointer',
     width: 380,
+    position: 'relative',
     height: 340,
     backgroundColor: '#fff',
     display: 'flex',
