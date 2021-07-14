@@ -6,7 +6,7 @@ const product = express.Router()
 product.get('/getCatalog', async (req, res) => {
   const { take, skip, orderby, orderAsc, tagId, categoryId, search } = req.query
   let query = `${BASE_URL}/products`
-  if (tagId || categoryId)query += '?q={'
+  if (tagId || categoryId) query += '?q={'
   if (tagId) query += `"tags":[{"_id":"${tagId}"}]`
   if (categoryId) query += `${tagId !== undefined ? ',' : ''}"categories":[{"_id":"${categoryId}"}]`
   if (tagId || categoryId) query += '}'
