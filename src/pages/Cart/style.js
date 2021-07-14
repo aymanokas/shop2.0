@@ -23,7 +23,7 @@ export default {
   bottomContainer: {
     width: '100%',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'space-between',
     flexDirection: 'row',
     marginBottom: 60
@@ -69,7 +69,31 @@ export default {
     justifyContent: 'space-between'
   },
   smallTitle: {
-    fontSize: 16,
-    margin: '36px 0 27px'
+    fontSize: 14,
+    margin: '36px 0 27px',
+    fontWeight: 400
+  },
+  formControl: {
+    width: '100%',
+    marginBottom: 27
+  },
+  inputWidth: {
+    width: '100%',
+    '& .MuiOutlinedInput-input': {
+      padding: 8
+    },
+    '& .MuiInputLabel-outlined': {
+      marginTop: -10
+    },
+    '& .MuiSelect-nativeInput': {
+      marginTop: -10
+    }
+  },
+  bold: {
+    fontWeight: 500,
+    fontSize: 20
+  },
+  coloredText: {
+    color: '#a749ff'
   }
 }
