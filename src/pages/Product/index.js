@@ -8,7 +8,7 @@ export default _ => {
   return (
     <>
       <NavBar fixed />
-      <BreadCrumb />
+      <BreadCrumb pathname='SHOP PRODUCT' />
       <ShopProduct />
       <Footer />
     </>

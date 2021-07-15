@@ -1,7 +1,6 @@
 import React from 'react'
 import NavBar from '../../components/NavBar'
 import BreadCrumb from '../../components/BreadCrumb'
-import ShopProduct from '../../components/ShopProduct'
 import Footer from '../../components/Footer'
 import ItemsTable from '../../components/ItemsTable'
 import { Button, makeStyles } from '@material-ui/core'
@@ -34,11 +33,11 @@ const whishListProducts = [
 
 const useStyle = makeStyles(style)
 export default _ => {
-    const { footerContainer, buttonStyle } = useStyle()
+  const { footerContainer, buttonStyle } = useStyle()
   return (
     <>
       <NavBar fixed />
-      <BreadCrumb />
+      <BreadCrumb pathname='WISH LIST' />
       <ItemsTable data={whishListProducts} />
       <Container>
         <div className={footerContainer}>
@@ -48,7 +47,7 @@ export default _ => {
           <Button variant='contained' className={buttonStyle}>
             Clear wishlist
           </Button>
-      </div>
+        </div>
       </Container>
       <Footer />
     </>

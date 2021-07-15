@@ -10,6 +10,7 @@ import LocalMallIcon from '@material-ui/icons/LocalMall'
 import { useDispatch } from 'react-redux'
 import { push } from 'connected-react-router'
 import CartMenu from '../CartMenu'
+import { HomePath } from '../../navigation/Routes'
 
 const useStyle = makeStyles(theme => style(theme))
 const logo = 'https://flone.reactdemo.hasthemes.com/assets/img/logo/logo.png'
@@ -55,10 +56,10 @@ export default () => {
             <MenuItem onClick={handleAccountClose}>My Account</MenuItem>
           </Menu>
           <Badge badgeContent={4} color='primary'>
-            <FavoriteBorderIcon className={iconStyle} onClick={handleWhishlistRoute}/>
+            <FavoriteBorderIcon className={iconStyle} onClick={handleWhishlistRoute} />
           </Badge>
           <Badge badgeContent={4} color='primary'>
-            <LocalMallIcon className={iconStyle} onClick={handleCartClick}/>
+            <LocalMallIcon className={iconStyle} onClick={handleCartClick} />
           </Badge>
           <Menu
             id='simple-menu'
@@ -72,7 +73,7 @@ export default () => {
         </div>
       </div>
       <div className={tabsBar}>
-        <Typography className={tab}>Home</Typography>
+        <Typography onClick={() => dispatch(push(HomePath))} className={tab}>Home</Typography>
         <Typography className={tab}>Collection</Typography>
         <Typography className={tab}>Contact Us</Typography>
       </div>

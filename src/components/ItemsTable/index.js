@@ -37,17 +37,17 @@ const config = ({ thumbnail, rowText, addButton, removeIcon }) => ({
       flex: 1,
       renderCell: (params) => <Button className={addButton}>Add to cart</Button>
     },
-     {
+    {
       field: 'action',
       headerName: 'Action',
       flex: 1,
-       renderCell: (params) => <CloseIcon className={removeIcon}/>
+      renderCell: (params) => <CloseIcon className={removeIcon} />
     }
   ]
 })
 
 export default ({ data }) => {
-  const { title, tableContainer, tableHeader, headerCell, tableRow, imageContainer, rowText, thumbnail, addButton, removeIcon } = useStyle()
+  const { title, rowText, thumbnail, addButton, removeIcon } = useStyle()
   return (
     <Container>
       <Typography className={title}>Your wishlist items</Typography>
