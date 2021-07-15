@@ -1,4 +1,5 @@
 import express from 'express'
+import moment from 'moment'
 import fetch from 'node-fetch'
 import { BASE_URL, X_API_KEY } from '../settings'
 const cart = express.Router()
@@ -112,6 +113,75 @@ cart.post('/removeItemFromCart/:userId/:itemId', async (req, res) => {
       const jsonCartPatch = await resultCartPatch.json()
       res.send(jsonCartPatch.products)
     } else throw new Error('no cart for this user')
+  } catch (err) {
+    res.status(500).send(err)
+  }
+})
+
+cart.post('/verifyCoupon/:coupon', async (req, res) => {
+  try {
+    const coupon = req.params.coupon
+    const query = `${BASE_URL}/coupon?q={"name": "${coupon}"}`
+    const result = await fetch(query, {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-apikey': X_API_KEY
+      }
+    })
+    const json = await result.json()
+    if (json.length) {
+      const couponInfos = json[0]
+      const isValid = moment().isBetween(couponInfos.startDate, couponInfos.endDate, 'day', '[]')
+      res.status(200).send(isValid)
+    } else res.status(404).send(false)
+  } catch (err) {
+    res.status(500).send(err)
+  }
+})
+
+cart.post('/computeCart/:userId', async (req, res) => {
+  try {
+    const userId = req.params.userId
+    const coupon = req.body.couponName
+    const query = `${BASE_URL}/shopingcart?q={"userId": "${userId}"}`
+    const result = await fetch(query, {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-apikey': X_API_KEY
+      }
+    })
+    const json = await result.json()
+    if (json.length) {
+      const cart = json[0]
+      let price = cart.products.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0)
+      if (coupon) {
+        const query = `${BASE_URL}/coupon?q={"name": "${coupon}"}`
+        const result = await fetch(query, {
+          method: 'get',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-apikey': X_API_KEY
+          }
+        })
+        const json = await result.json()
+        if (json.length) {
+          const couponInfos = json[0]
+          const isValid = moment().isBetween(couponInfos.startDate, couponInfos.endDate, 'day', '[]')
+          if (isValid) {
+            if (couponInfos.percentage) {
+              price = Number((price - (price * couponInfos.percentage / 100)).toFixed(1))
+            } else {
+              price = Number((price - couponInfos.discount).toFixed(1))
+            }
+          }
+        }
+      }
+      res.status(200).send({ price })
+    } else {
+      res.status(500).send('no cart found')
+    }
   } catch (err) {
     res.status(500).send(err)
   }
