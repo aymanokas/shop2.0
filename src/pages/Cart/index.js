@@ -71,19 +71,20 @@ export default _ => {
                 labelId='country-label'
                 id='country'
                 value={county}
-                onChange={handleCountryChange}>
+                onChange={handleCountryChange}
+              >
                 <MenuItem value={10}>Rabat</MenuItem>
                 <MenuItem value={20}>Temara</MenuItem>
                 <MenuItem value={30}>Sale</MenuItem>
               </Select>
             </FormControl>
-            <TextField className={inputWidth} id='zip-code' label='Zip' variant='outlined' value={zipCode} onChange={handleZipCodeChange}/>
+            <TextField className={inputWidth} id='zip-code' label='Zip' variant='outlined' value={zipCode} onChange={handleZipCodeChange} />
             <Button className={buttonClass}>Get a quote</Button>
           </div>
           <div className={paper}>
             <Typography className={titleClass}>Use Coupon</Typography>
             <Typography className={smallTitle}>Enter your coupon code if you have one</Typography>
-            <TextField className={inputWidth} id='coupon' label='Coupon' variant='outlined' value={coupon} onChange={handleCouponChange}/>
+            <TextField className={inputWidth} id='coupon' label='Coupon' variant='outlined' value={coupon} onChange={handleCouponChange} />
             <Button className={buttonClass}>Apply coupon</Button>
           </div>
           <div className={paper}>
