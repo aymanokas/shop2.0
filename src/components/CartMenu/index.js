@@ -1,10 +1,14 @@
 import React from 'react'
 import { Typography, makeStyles, Button } from '@material-ui/core'
 import style from './style'
+import { useDispatch } from 'react-redux'
+import { push } from 'connected-react-router'
+import { CheckoutPath } from '../../navigation/Routes'
 
 const useStyle = makeStyles(style)
 export default () => {
-  const { root, productsContainer, product, thumbnail, productInfo, divider, total, buttonClass, titleClass, qtyClass, priceClass } = useStyle()
+  const dispatch = useDispatch()
+  const { root, productsContainer, product, thumbnail, productInfo, total, buttonClass, titleClass, qtyClass, priceClass } = useStyle()
   return (
     <div className={root}>
       <div className={productsContainer}>
@@ -29,7 +33,7 @@ export default () => {
           <Typography>$9999</Typography>
         </div>
         <Button className={buttonClass}>View Cart</Button>
-        <Button className={buttonClass}>Check Out</Button>
+        <Button onClick={() => dispatch(push(CheckoutPath))} className={buttonClass}>Check Out</Button>
       </div>
     </div>
   )

@@ -10,6 +10,7 @@ import Product from '../pages/Product'
 import Wishlist from '../pages/Whishlist'
 import Cart from '../pages/Cart'
 import Checkout from '../pages/Checkout'
+import Catalog from '../pages/Catalog'
 
 export default () => {
   return (
@@ -30,6 +31,9 @@ export default () => {
         <Route exact path={CheckoutPath}>
           <Checkout />
         </Route>
+        <Route exact path={CatalogPath}>
+          <Catalog />
+        </Route>
       </Switch>
     </ConnectedRouter>
   )
@@ -40,3 +44,4 @@ export const ProductPath = '/Product'
 export const WishlistPath = '/Wishlist'
 export const CartPath = '/Cart'
 export const CheckoutPath = '/Checkout'
+export const CatalogPath = '/Catalog'
