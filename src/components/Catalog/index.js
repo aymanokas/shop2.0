@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import { Typography, MenuItem, TextField, makeStyles, Button } from '@material-ui/core'
+import { MenuItem, TextField, makeStyles, Button } from '@material-ui/core'
 import style from './style'
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
-import RemoveRedEyeIcon from '@material-ui/icons/RemoveRedEye'
 import Container from '../Container'
 import NavBar from '../NavBar'
 import BreadCrumb from '../BreadCrumb'
 import Footer from '../Footer'
+import ProductCard from '../ProductCard'
 const arr = [11, 1, 1, 1, 1, 1, 1, 1, 11, 1, 1, 1]
 const filters = [
   {
@@ -24,7 +23,7 @@ const filters = [
 ]
 const useStyle = makeStyles(style)
 export default () => {
-  const { productsStyle, badges, filterStyle, buttonStyle, isNew, buttonContainer, discountAmount, discoutedPrice, titleandpriceContainer, selectButton, previewButton, productImage, productContainer, productTitle, productPrice, wishButton } = useStyle()
+  const { productsStyle, filterStyle, buttonStyle, buttonContainer } = useStyle()
 
   const [currency, setCurrency] = useState(0)
   const handleChange = (event) => {
@@ -52,21 +51,7 @@ export default () => {
           {arr.map(
             (item, key) => {
               return (
-                <div key={key} className={productContainer}>
-                  <div className={productImage}>
-                    <div className={badges}>
-                      <Typography className={discountAmount}>-{item}%</Typography>
-                      <Typography className={isNew}>New</Typography>
-                    </div>
-                    <Button className={wishButton}><FavoriteBorderIcon /></Button>
-                    <Button className={selectButton}>Select Option</Button>
-                    <Button className={previewButton}><RemoveRedEyeIcon /></Button>
-                  </div>
-                  <div className={titleandpriceContainer}>
-                    <Typography className={productTitle}>Very expensive speaker</Typography>
-                    <Typography className={productPrice}>€900.54 &nbsp;<Typography className={discoutedPrice}>&nbsp; €900.54</Typography> </Typography>
-                  </div>
-                </div>
+                <ProductCard key={key} />
               )
             }
           )}
