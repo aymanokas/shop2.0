@@ -171,5 +171,9 @@ export default {
   },
   filterStyle: {
     margin: '24px 0 0 16px'
+  },
+  width: {
+    width: 100,
+    height: 100
   }
 }

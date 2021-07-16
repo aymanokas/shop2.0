@@ -5,7 +5,7 @@ import RemoveRedEyeIcon from '@material-ui/icons/RemoveRedEye'
 import style from './style'
 
 const useStyle = makeStyles(style)
-export default () => {
+export default ({ handleOpen }) => {
   const { badges, isNew, discountAmount, discoutedPrice, titleandpriceContainer, selectButton, previewButton, productImage, productContainer, productTitle, productPrice, wishButton } = useStyle()
 
   return (
@@ -17,7 +17,7 @@ export default () => {
         </div>
         <Button className={wishButton}><FavoriteBorderIcon /></Button>
         <Button className={selectButton}>Select Option</Button>
-        <Button className={previewButton}><RemoveRedEyeIcon /></Button>
+        <Button onClick={handleOpen} className={previewButton}><RemoveRedEyeIcon /></Button>
       </div>
       <div className={titleandpriceContainer}>
         <Typography className={productTitle}>Very expensive speaker</Typography>
