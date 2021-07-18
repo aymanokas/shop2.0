@@ -11,6 +11,7 @@ import Wishlist from '../pages/Whishlist'
 import Cart from '../pages/Cart'
 import Checkout from '../pages/Checkout'
 import Catalog from '../pages/Catalog'
+import Contact from '../pages/Contact'
 
 export default () => {
   return (
@@ -34,6 +35,9 @@ export default () => {
         <Route exact path={CatalogPath}>
           <Catalog />
         </Route>
+        <Route exact path={ContactPath}>
+          <Contact />
+        </Route>
       </Switch>
     </ConnectedRouter>
   )
@@ -45,3 +49,4 @@ export const WishlistPath = '/Wishlist'
 export const CartPath = '/Cart'
 export const CheckoutPath = '/Checkout'
 export const CatalogPath = '/Catalog'
+export const ContactPath = '/Contact'

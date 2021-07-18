@@ -10,7 +10,7 @@ import LocalMallIcon from '@material-ui/icons/LocalMall'
 import { useDispatch } from 'react-redux'
 import { push } from 'connected-react-router'
 import CartMenu from '../CartMenu'
-import { CatalogPath, HomePath } from '../../navigation/Routes'
+import { CatalogPath, HomePath, ContactPath } from '../../navigation/Routes'
 
 const useStyle = makeStyles(theme => style(theme))
 const logo = 'https://flone.reactdemo.hasthemes.com/assets/img/logo/logo.png'
@@ -75,7 +75,7 @@ export default () => {
       <div className={tabsBar}>
         <Typography onClick={() => dispatch(push(HomePath))} className={tab}>Home</Typography>
         <Typography onClick={() => dispatch(push(CatalogPath))} className={tab}>Collection</Typography>
-        <Typography className={tab}>Contact Us</Typography>
+        <Typography onClick={() => dispatch(push(ContactPath))} className={tab}>Contact Us</Typography>
       </div>
     </Container>
   )
