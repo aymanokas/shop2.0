@@ -15,7 +15,26 @@ wish.get('/:userId', async (req, res) => {
   })
   const jsonWishList = await resultWish.json()
   if (jsonWishList.length) {
-    return res.status(200).json({ success: true, data: jsonWishList[0] })
+    const wishlist = jsonWishList[0]
+    const query = `${BASE_URL}/shopingcart?q={"userId": "${userId}"}`
+    const cart = await fetch(query, {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-apikey': X_API_KEY
+      }
+    })
+    const cartJson = await cart.json()
+    if (cartJson.length) {
+      const formattedProducts = wishlist.products.map(item => {
+        const itemFound = cartJson[0].products.find(itemInCart => itemInCart._id === item._id)
+        if (itemFound) item.inCart = true
+        else item.inCart = false
+        return item
+      })
+      wishlist.products = formattedProducts
+    }
+    return res.status(200).json({ success: true, data: wishlist })
   } else {
     return res.status(404).json({ error: true, exist: false })
   }
