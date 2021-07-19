@@ -8,7 +8,6 @@ import Footer from '../Footer'
 import Rating from '@material-ui/lab/Rating'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import ProductCard from '../ProductCard'
-const arr = [11, 1, 1, 1, 1, 1, 1, 1, 11, 1, 1, 1]
 const filters = [
   {
     value: 0,
@@ -24,7 +23,7 @@ const filters = [
   }
 ]
 const useStyle = makeStyles(style)
-export default () => {
+export default ({ catalog }) => {
   const { productsStyle, filterStyle, buttonStyle, paper, buttonContainer, productImage, badges, product, discountAmount, sizes, addToCartSection, radioContainer, iconStyle, shopButtonStyle, dividerStyle, meduimRadio, blueRadio, yellowRadio, productDescription, isNew, productControls, productDicountedPrice, productTitle, titleAndPrice, productPrice } = useStyle()
   const [open, setOpen] = React.useState(false)
   const handleClose = () => {
@@ -37,6 +36,7 @@ export default () => {
   const handleChange = (event) => {
     setCurrency(event.target.value)
   }
+  console.warn(catalog)
   return (
     <>
       <NavBar fixed />
@@ -56,10 +56,10 @@ export default () => {
           ))}
         </TextField>
         <div className={productsStyle}>
-          {arr.map(
+          {catalog?.map(
             (item, key) => {
               return (
-                <ProductCard handleOpen={handleOpen} key={key} />
+                <ProductCard item={item} handleOpen={handleOpen} key={key} />
               )
             }
           )}

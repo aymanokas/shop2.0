@@ -3,7 +3,8 @@ import fetch from 'node-fetch'
 import { BASE_URL } from '../../constants'
 
 const initialUserState = {
-  
+  count: 0,
+  data: []
 }
 
 export const reducer = (state = initialUserState, { type, data }) => {
@@ -11,29 +12,32 @@ export const reducer = (state = initialUserState, { type, data }) => {
     case GET_CATALOG_SUCCESS:
       return {
         ...state,
-        catalog: data
+        ...data
       }
     default:
       return state
   }
 }
 
-export const getCatalogAction = () => ({ type: GET_CATALOG_SUCCESS })
+export const getCatalogAction = () => ({ type: GET_CATALOG_REQUESTED })
 
 function * fetchCatalog () {
   try {
-    yield put({ type: GET_CATALOG_SUCCESS, data: 'hello' })
+    const json = yield fetch(queries.getCatalog)
+    const response = yield json.json()
+    console.warn(response)
+    yield put({ type: GET_CATALOG_SUCCESS, data: response })
   } catch (err) {
     yield put({ type: GET_CATALOG_FAILED, data: err })
   }
 }
 
-export function * trainerRootSaga () {
+export function * catalogRootSaga () {
   yield takeLatest(GET_CATALOG_REQUESTED, fetchCatalog)
 }
 
 const queries = {
-  getCatalog: `${BASE_URL}/`
+  getCatalog: `${BASE_URL}/catalog/getCatalog?take=10&skip=0`
 }
 
 const GET_CATALOG_SUCCESS = 'GET_CATALOG_SUCCESS'

@@ -6,6 +6,7 @@ import catalog from './routes/catalog'
 import catergories from './routes/catergories'
 import cart from './routes/cart'
 import wish from './routes/wish'
+import path from 'path'
 
 const app = express()
 app.use(bodyParser.json())
