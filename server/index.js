@@ -9,15 +9,14 @@ import wish from './routes/wish'
 
 const app = express()
 app.use(bodyParser.json())
-app.use('/user', user)
-app.use('/catalog', catalog)
-app.use('/categories', catergories)
-app.use('/cart', cart)
-app.use('/wish', wish)
+app.use('/api/user', user)
+app.use('/api/catalog', catalog)
+app.use('/api/categories', catergories)
+app.use('/api/cart', cart)
+app.use('/api/wish', wish)
 
-app.get('/', (req, res) => {
-  res.send('Hello Babel')
-})
+// React Route
+app.use('/', express.static(path.join(__dirname, 'client/build')))
 
 app.listen(4000, () => {
   console.log('app is listening to port 4000')

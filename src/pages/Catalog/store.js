@@ -1,6 +1,9 @@
 import { takeLatest, put } from 'redux-saga/effects'
-const initialUserState = {
+import fetch from 'node-fetch'
+import { BASE_URL } from '../../constants'
 
+const initialUserState = {
+  
 }
 
 export const reducer = (state = initialUserState, { type, data }) => {
@@ -27,6 +30,10 @@ function * fetchCatalog () {
 
 export function * trainerRootSaga () {
   yield takeLatest(GET_CATALOG_REQUESTED, fetchCatalog)
+}
+
+const queries = {
+  getCatalog: `${BASE_URL}/`
 }
 
 const GET_CATALOG_SUCCESS = 'GET_CATALOG_SUCCESS'
