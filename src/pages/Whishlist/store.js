@@ -30,7 +30,6 @@ function * fetchUser () {
   }
 }
 
-
 export function * userRootSaga () {
 
 }
@@ -38,5 +37,3 @@ export function * userRootSaga () {
 const queries = {
   getWishList: `${BASE_URL}/wish`
 }
-
-const 

@@ -19,6 +19,4 @@ app.use('/api/wish', wish)
 // React Route
 app.use('/', express.static(path.join(__dirname, 'client/build')))
 
-app.listen(4000, () => {
-  console.log('app is listening to port 4000')
-})
+app.listen(4000, () => console.log(`Server up and running on port ${'4000'} !`))
