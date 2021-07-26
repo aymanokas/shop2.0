@@ -40,8 +40,9 @@ wish.get('/:userId', async (req, res) => {
   }
 })
 
-wish.post('/:userId/:productId', async (req, res) => {
-  const { userId, productId } = req.params
+wish.post('/:userId', async (req, res) => {
+  const { userId } = req.params
+  const { productId } = req.body
   const getWishListQuery = `${BASE_URL}/wishlist?q={"userId": "${userId}"}`
   const resultWish = await fetch(getWishListQuery, {
     method: 'get',
@@ -51,12 +52,16 @@ wish.post('/:userId/:productId', async (req, res) => {
     }
   })
   const jsonWishList = await resultWish.json()
+  let products
+  if (Array.isArray(productId)) {
+    products = productId.map(item => ({ _id: item }))
+  } else {
+    products = [{ _id: productId }]
+  }
   if (!jsonWishList.length) {
     const body = {
       userId,
-      products: [
-        { _id: productId }
-      ]
+      products
     }
     const createWishListQuery = `${BASE_URL}/wishlist`
     const result = await fetch(createWishListQuery, {
