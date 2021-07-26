@@ -24,6 +24,8 @@ export default () => {
   const handleCartClick = (event) => setAnchorCart(event.currentTarget)
   const handleCartClose = () => setAnchorCart(null)
   const handleWhishlistRoute = () => dispatch(push('/Wishlist'))
+  const handleLoginRoute = () => dispatch(push('/Login'))
+  const handleRegisterRoute = () => dispatch(push('/Login'))
   return (
     <Container>
       <div className={navbarContainer}>
@@ -51,8 +53,8 @@ export default () => {
             open={Boolean(anchorAccount)}
             onClose={handleAccountClose}
           >
-            <MenuItem onClick={handleAccountClose}>Register</MenuItem>
-            <MenuItem onClick={handleAccountClose}>Login</MenuItem>
+            <MenuItem onClick={handleRegisterRoute}>Register</MenuItem>
+            <MenuItem onClick={handleLoginRoute}>Login</MenuItem>
             <MenuItem onClick={handleAccountClose}>My Account</MenuItem>
           </Menu>
           <Badge badgeContent={4} color='primary'>

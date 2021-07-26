@@ -8,6 +8,7 @@ const bcrypt = require('bcryptjs')
 user.post('/login', async (req, res) => {
   const userName = req.body.userName
   const password = req.body.password
+  console.log(req.body)
   const query = `${BASE_URL}/users?q={"userName": "${userName}"}`
   const result = await fetch(query, {
     method: 'get',
