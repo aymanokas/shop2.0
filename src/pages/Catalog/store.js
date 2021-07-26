@@ -37,7 +37,7 @@ export function * catalogRootSaga () {
 }
 
 const queries = {
-  getCatalog: (take, skip) => `${BASE_URL}/catalog/getCatalog?take=${take}&skip=${skip}`
+  getCatalog: (take, skip) => `${BASE_URL}/catalog/getCatalog?take=${take}&skip=${skip}&orderby=numberOfPurchases`
 }
 
 const GET_CATALOG_SUCCESS = 'GET_CATALOG_SUCCESS'

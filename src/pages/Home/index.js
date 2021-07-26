@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NavBar from '../../components/NavBar'
 import Swiper from '../../components/Swiper'
 import Categories from '../../components/Categories'
@@ -14,6 +14,7 @@ const useStyle = makeStyles(style)
 
 export default _ => {
   const { homeContainer, aboutUsContainer, flashBannersContainer, footerContainer } = useStyle()
+  const [index, setIndex] = useState(2)
   return (
     <>
       <div className={homeContainer}>
@@ -24,8 +25,8 @@ export default _ => {
       <div className={aboutUsContainer}>
         <AboutUs />
       </div>
-      <Tabs />
-      <Product />
+      <Tabs index={index} setIndex={setIndex} />
+      <Product index={index} />
       <div className={flashBannersContainer}>
         <FlashBanners />
       </div>
