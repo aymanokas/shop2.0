@@ -4,18 +4,20 @@ import style from './style'
 import Container from '../Container'
 import DataTable from '../datatable'
 import CloseIcon from '@material-ui/icons/Close'
+import { removeItemWishListAction } from '../../pages/Whishlist/store'
+import { useDispatch } from 'react-redux'
 
 const useStyle = makeStyles(style)
 
-const config = ({ thumbnail, rowText, addButton, removeIcon }) => ({
+const config = ({ thumbnail, rowText, addButton, removeIcon, dispatch }) => ({
   columns: [
     {
-      field: 'photo',
+      field: 'images',
       headerName: 'IMAGE',
       flex: 1,
       renderCell: (params) => (
         <>
-          <img src={params.value} alt='thumbnail' className={thumbnail} />
+          <img src={params.value[0]} alt='thumbnail' className={thumbnail} />
         </>
       )
     },
@@ -38,21 +40,22 @@ const config = ({ thumbnail, rowText, addButton, removeIcon }) => ({
       renderCell: (params) => <Button className={addButton}>Add to cart</Button>
     },
     {
-      field: 'action',
+      field: '_id',
       headerName: 'Action',
       flex: 1,
-      renderCell: (params) => <CloseIcon className={removeIcon} />
+      renderCell: (params) => <CloseIcon onClick={() => dispatch(removeItemWishListAction(params.value))} className={removeIcon} />
     }
   ]
 })
 
 export default ({ data }) => {
   const { title, rowText, thumbnail, addButton, removeIcon } = useStyle()
+  const dispatch = useDispatch()
   return (
     <Container>
       <Typography className={title}>Your wishlist items</Typography>
       <DataTable
-        config={{ ...config({ thumbnail, rowText, addButton, removeIcon }), rows: data }}
+        config={{ ...config({ thumbnail, rowText, addButton, removeIcon, dispatch }), rows: data }}
         pageSize={data.length}
         rowCount={data.length}
         headerHeight={90}

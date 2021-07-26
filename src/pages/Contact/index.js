@@ -21,12 +21,11 @@ export default _ => {
         <Grid
           className={container}
           container
-          spacing={2}
           direction='row'
-          justifyContent='center'
+          justifycontent='center'
           alignItems='center'
         >
-          <Grid spacing={2} item xs={4}>
+          <Grid item xs={4}>
             <div className={paperContainer}>
               <div className={textContainer}>
                 <div className={iconContainer}>
@@ -56,7 +55,7 @@ export default _ => {
               </div>
             </div>
           </Grid>
-          <Grid spacing={2} item xs={8}>
+          <Grid item xs={8}>
             <div className={formPaper}>
               <Typography className={formHeader}>Get in touch</Typography>
               <div className={rowInputContainer}>

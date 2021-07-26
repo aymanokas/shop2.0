@@ -18,12 +18,11 @@ export default () => {
         <Grid
           className={container}
           container
-          spacing={2}
           direction='row'
-          justifyContent='center'
+          justifycontent='center'
           alignItems='center'
         >
-          <Grid spacing={2} item xs={7}>
+          <Grid item xs={7}>
             <Typography className={productTitle}>Billing Details</Typography>
             <div className={rowInputContainer}>
               <TextField className={inputWidthSmall} id='fname' label='First Name' variant='outlined' />
@@ -39,7 +38,7 @@ export default () => {
             <TextField className={inputWidth} id='fname' label='Email Address' variant='outlined' />
             <TextField className={inputWidth} id='fname' label='Additional information' variant='outlined' />
           </Grid>
-          <Grid spacing={2} item xs={5}>
+          <Grid item xs={5}>
             <Typography className={productTitle}>Your order</Typography>
             <div className={paperContainer}>
               <div className={textContainer}>

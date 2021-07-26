@@ -7,6 +7,7 @@ import storage from 'redux-persist/es/storage'
 import rootSaga from './rootSaga'
 import createLogger from 'redux-logger'
 import { reducer as catalog } from '../pages/Catalog/store'
+import { reducer as wishList } from '../pages/Whishlist/store'
 
 /* Session thing */
 import { sessionReducer, sessionService } from 'redux-react-session'
@@ -15,6 +16,7 @@ export const history = createBrowserHistory()
 
 const reducers = {
   catalog,
+  wishList,
   router: connectRouter(history),
   session: sessionReducer
 }

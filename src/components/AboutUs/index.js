@@ -5,7 +5,7 @@ import Container from '../Container'
 
 const useStyle = makeStyles(style)
 
-export default () => {
+const AboutUs = () => {
   const { root, smallHeader, header, divider, paragprah } = useStyle()
 
   return (
@@ -19,3 +19,5 @@ export default () => {
     </Container>
   )
 }
+
+export default AboutUs

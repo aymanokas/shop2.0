@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import NavBar from '../../components/NavBar'
 import BreadCrumb from '../../components/BreadCrumb'
 import Footer from '../../components/Footer'
@@ -6,39 +6,19 @@ import ItemsTable from '../../components/ItemsTable'
 import { Button, makeStyles } from '@material-ui/core'
 import style from './style'
 import Container from '../../components/Container'
-
-const whishListProducts = [
-  {
-    id: 1,
-    photo: 'https://flone.reactdemo.hasthemes.com/assets/img/product/electronics/5.jpg',
-    name: 'Lorem ipsum headphone',
-    price: '900',
-    isInCart: true
-  },
-  {
-    id: 2,
-    photo: 'https://flone.reactdemo.hasthemes.com/assets/img/product/electronics/5.jpg',
-    name: 'Lorem ipsum speaker',
-    price: '500',
-    isInCart: false
-  },
-  {
-    id: 3,
-    photo: 'https://flone.reactdemo.hasthemes.com/assets/img/product/electronics/5.jpg',
-    name: 'Lorem ipsum camera',
-    price: '300',
-    isInCart: false
-  }
-]
+import { useDispatch, useSelector } from 'react-redux'
 
 const useStyle = makeStyles(style)
 export default _ => {
   const { footerContainer, buttonStyle } = useStyle()
+  const data = useSelector(({ wishList }) => wishList)
+  const dispatch = useDispatch()
+  useEffect(() => null, [])
   return (
     <>
       <NavBar fixed />
       <BreadCrumb pathname='WISH LIST' />
-      <ItemsTable data={whishListProducts} />
+      <ItemsTable data={data} />
       <Container>
         <div className={footerContainer}>
           <Button variant='contained' className={buttonStyle}>

@@ -37,9 +37,7 @@ export default ({ catalog, total }) => {
   const handleOpen = () => {
     setOpen(true)
   }
-  useEffect(() => {
-    JSON.stringify(catalog) !== JSON.stringify(data) && setCatalog([...data, ...catalog])
-  }, [catalog])
+  useEffect(() => JSON.stringify(catalog) !== JSON.stringify(data) && setCatalog([...data, ...catalog]), [catalog])
   const handleShowMore = () => {
     setShowMore(showMore + 9)
     dispatch(getCatalogAction(9, showMore))

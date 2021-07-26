@@ -6,6 +6,7 @@ import RemoveRedEyeIcon from '@material-ui/icons/RemoveRedEye'
 import Container from '../Container'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCatalogAction } from '../../pages/Catalog/store'
+import { addItemAction } from '../../pages/Whishlist/store'
 
 const useStyle = makeStyles(style)
 export default ({ index }) => {
@@ -36,7 +37,7 @@ export default ({ index }) => {
                   {!!item?.discountPercentage && <Typography className={discountAmount}>-{item?.discountPercentage}%</Typography>}
                   {item?.isNew && <Typography className={isNew}>New</Typography>}
                 </div>
-                <Button className={wishButton}><FavoriteBorderIcon /></Button>
+                <Button onClick={() => dispatch(addItemAction({...item, id: item._id}))} className={wishButton}><FavoriteBorderIcon /></Button>
                 <Button className={selectButton}>Select Option</Button>
                 <Button className={previewButton}><RemoveRedEyeIcon /></Button>
               </div>

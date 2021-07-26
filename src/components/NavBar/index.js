@@ -7,7 +7,7 @@ import InputBase from '@material-ui/core/InputBase'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import LocalMallIcon from '@material-ui/icons/LocalMall'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { push } from 'connected-react-router'
 import CartMenu from '../CartMenu'
 import { CatalogPath, HomePath, ContactPath } from '../../navigation/Routes'
@@ -17,6 +17,8 @@ const logo = 'https://flone.reactdemo.hasthemes.com/assets/img/logo/logo.png'
 export default () => {
   const { callusStyle, tabsBar, tab, navbarContainer, iconStyle, iconsContainerStyle, logoStyle, search, searchIcon, inputRoot, inputInput } = useStyle()
   const dispatch = useDispatch()
+  const wishList = useSelector(({ wishList }) => wishList)
+  console.log('========> ', wishList.length)
   const [anchorAccount, setAnchorAccount] = React.useState(null)
   const handleAccountClick = (event) => setAnchorAccount(event.currentTarget)
   const handleAccountClose = () => setAnchorAccount(null)
@@ -57,10 +59,10 @@ export default () => {
             <MenuItem onClick={handleLoginRoute}>Login</MenuItem>
             <MenuItem onClick={handleAccountClose}>My Account</MenuItem>
           </Menu>
-          <Badge badgeContent={4} color='primary'>
+          <Badge badgeContent={wishList.length} color='primary'>
             <FavoriteBorderIcon className={iconStyle} onClick={handleWhishlistRoute} />
           </Badge>
-          <Badge badgeContent={4} color='primary'>
+          <Badge badgeContent={5} color='primary'>
             <LocalMallIcon className={iconStyle} onClick={handleCartClick} />
           </Badge>
           <Menu
