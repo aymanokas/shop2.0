@@ -31,7 +31,7 @@ export default {
     position: 'relative',
     height: '100%',
     display: 'flex',
-    backgroundImage: 'url("https://flone.reactdemo.hasthemes.com/assets/img/product/electronics/5.jpg")',
+    backgroundImage: ({ image }) => `url("${image}")`,
     overflow: 'hidden',
     alignItems: 'flex-end',
     backgroundSize: '100%',

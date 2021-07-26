@@ -11,14 +11,17 @@ import Wishlist from '../pages/Whishlist'
 import Cart from '../pages/Cart'
 import Checkout from '../pages/Checkout'
 import Catalog from '../pages/Catalog'
+import Contact from '../pages/Contact'
+import Login from '../pages/Login'
+import PrivateRoute from './PrivateRoute';
 
 export default () => {
   return (
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path={HomePath}>
+        <PrivateRoute exact path={HomePath}>
           <Home />
-        </Route>
+        </PrivateRoute>
         <Route exact path={ProductPath}>
           <Product />
         </Route>
@@ -34,6 +37,12 @@ export default () => {
         <Route exact path={CatalogPath}>
           <Catalog />
         </Route>
+        <Route exact path={ContactPath}>
+          <Contact />
+        </Route>
+        <Route exact path={LoginPath}>
+          <Login />
+        </Route>
       </Switch>
     </ConnectedRouter>
   )
@@ -45,3 +54,5 @@ export const WishlistPath = '/Wishlist'
 export const CartPath = '/Cart'
 export const CheckoutPath = '/Checkout'
 export const CatalogPath = '/Catalog'
+export const ContactPath = '/Contact'
+export const LoginPath = '/Login'

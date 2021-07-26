@@ -5,23 +5,23 @@ import RemoveRedEyeIcon from '@material-ui/icons/RemoveRedEye'
 import style from './style'
 
 const useStyle = makeStyles(style)
-export default ({ handleOpen }) => {
-  const { badges, isNew, discountAmount, discoutedPrice, titleandpriceContainer, selectButton, previewButton, productImage, productContainer, productTitle, productPrice, wishButton } = useStyle()
-
+export default ({ handleOpen, item }) => {
+  const { badges, isNew, discountAmount, discoutedPrice, titleandpriceContainer, selectButton, previewButton, productImage, productContainer, productTitle, productPrice, wishButton } = useStyle({ image: item?.images[0] })
+  console.warn(item?.isNew)
   return (
     <div className={productContainer}>
       <div className={productImage}>
         <div className={badges}>
-          <Typography className={discountAmount}>-11%</Typography>
-          <Typography className={isNew}>New</Typography>
+          {!!item?.discountPercentage && <Typography className={discountAmount}>-{item?.discountPercentage}%</Typography>}
+          {item?.isNew && <Typography className={isNew}>New</Typography>}
         </div>
         <Button className={wishButton}><FavoriteBorderIcon /></Button>
         <Button className={selectButton}>Select Option</Button>
         <Button onClick={handleOpen} className={previewButton}><RemoveRedEyeIcon /></Button>
       </div>
       <div className={titleandpriceContainer}>
-        <Typography className={productTitle}>Very expensive speaker</Typography>
-        <Typography className={productPrice}>€900.54 &nbsp;<Typography className={discoutedPrice}>&nbsp; €900.54</Typography> </Typography>
+        <Typography className={productTitle}>{item?.name}</Typography>
+        <Typography className={productPrice}>€{item?.discountPrice ? item?.discountPrice : item?.price} {!!item?.discountPrice && <Typography className={discoutedPrice}>&nbsp; €{item?.price}</Typography>} </Typography>
       </div>
     </div>
   )
