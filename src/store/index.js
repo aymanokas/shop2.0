@@ -7,13 +7,16 @@ import storage from 'redux-persist/es/storage'
 import rootSaga from './rootSaga'
 import createLogger from 'redux-logger'
 import { reducer as catalog } from '../pages/Catalog/store'
-/* Reducers */
+
+/* Session thing */
+import { sessionReducer, sessionService } from 'redux-react-session'
 
 export const history = createBrowserHistory()
 
 const reducers = {
   catalog,
-  router: connectRouter(history)
+  router: connectRouter(history),
+  session: sessionReducer
 }
 
 const rootReducer = persistCombineReducers({
@@ -43,3 +46,7 @@ export const store = createStore(
 export const persistor = persistStore(store)
 
 sagaMiddleware.run(rootSaga)
+
+/* Session thing */
+const options = { refreshOnCheckAuth: true, redirectPath: '/Login', driver: 'COOKIES' }
+sessionService.initSessionService(store, options)

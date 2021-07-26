@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import NavBar from '../../components/NavBar'
 import BreadCrumb from '../../components/BreadCrumb'
 import Footer from '../../components/Footer'
@@ -7,6 +7,7 @@ import style from './style'
 import Container from '../../components/Container'
 import { signupAction, signinAction } from './store'
 import { useDispatch } from 'react-redux'
+import { sessionService } from 'redux-react-session'
 
 const useStyle = makeStyles(style)
 export default _ => {
@@ -21,6 +22,12 @@ export default _ => {
   const handleUsernameChange = (e) => setUsername(e.target.value)
   const handleRegister = () => dispatch(signupAction({ email, userName, password }))
   const handleLogin = () => dispatch(signinAction({ userName, password }))
+  useEffect(() => {
+    sessionService.loadSession()
+.then(currentSession => console.log('-hhhhhh',currentSession))
+.catch(err => console.log(err))
+
+  }, [])
   return (
     <>
       <NavBar fixed />

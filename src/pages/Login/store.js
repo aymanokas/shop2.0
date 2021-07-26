@@ -1,6 +1,8 @@
-import { put, select, takeLatest } from 'redux-saga/effects'
+import { put, takeLatest } from 'redux-saga/effects'
 import fetch from 'node-fetch'
 import { BASE_URL } from '../../constants'
+import { sessionService } from 'redux-react-session'
+const jwt = require('jsonwebtoken')
 
 const initialState = {
 
@@ -39,7 +41,7 @@ function * signupUser ({ data }) {
 
 function * signinUser ({ data }) {
   try {
-    const response = yield fetch(
+    const json = yield fetch(
       queries.login,
       {
         method: 'POST',
@@ -47,8 +49,10 @@ function * signinUser ({ data }) {
         body: JSON.stringify(data)
       }
     )
-    console.log('-------------> ', response)
-    yield put({ type: SIGN_IN_SUCCESS, data: response })
+    const response = yield json.json()
+    const decoded = jwt.decode(response.token)
+    delete decoded.password
+    sessionService.saveUser(decoded)
   } catch (err) {
     yield put({ type: SING_IN_FAIL, err })
   }
@@ -70,4 +74,3 @@ const SIGN_UP_FAIL = 'SIGN_UP_FAIL'
 
 const SIGN_IN_REQUESTED = 'SIGN_IN_REQUESTED'
 const SING_IN_FAIL = 'SING_IN_FAIL'
-const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS'

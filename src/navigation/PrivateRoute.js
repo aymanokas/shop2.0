@@ -1,16 +1,23 @@
 import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { signin } from 'identity/userManager'
+import Login from '../pages/Login'
+import { sessionService } from 'redux-react-session'
+import Home from '../pages/Home'
+import App from '../core/App'
 
 const PrivateRoute = ({ path, exact, isConnected, children, logoutInProgress }) => {
-  return isConnected || logoutInProgress
-    ? <Route exact={exact} path={path}>{children}</Route>
-    : signin()
+  console.log(sessionService.checkAuth)
+  return (
+    <>
+      <Route onEnter={sessionService.checkAuth} component={Home} />
+      <Route path='/Login' component={Login} />
+    </>
+  )
 }
 
-const mapStateToProps = ({ identity }) => ({
-  isConnected: identity.isConnected,
-  logoutInProgress: identity.logoutInProgress
+const mapStateToProps = ({ session }) => ({
+  sessionInfo: session.authenticated,
+  checked: session.checked
 })
 
 export default connect(mapStateToProps, null)(PrivateRoute)
