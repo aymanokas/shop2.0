@@ -6,13 +6,12 @@ import { getCatalogAction } from './store'
 export default _ => {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getCatalogAction())
+    dispatch(getCatalogAction(9, 0))
   }, [])
-  const { data } = useSelector(({ catalog }) => catalog)
-  console.warn(data)
+  const { data, count } = useSelector(({ catalog }) => catalog)
   return (
     <>
-      <Catalog catalog={data} />
+      <Catalog total={count} catalog={data} />
     </>
   )
 }

@@ -25,7 +25,7 @@ product.get('/getCatalog', async (req, res) => {
     }
   })
   const json = await result.json()
-  if (json && json.data) return res.send({ count: json.totals.count, data: json.data })
+  if (json && json.data) return res.send({ count: json.totals.total, data: json.data })
   else return res.send({ count: 0, data: [] })
 })
 

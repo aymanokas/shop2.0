@@ -19,13 +19,13 @@ export const reducer = (state = initialUserState, { type, data }) => {
   }
 }
 
-export const getCatalogAction = () => ({ type: GET_CATALOG_REQUESTED })
+export const getCatalogAction = (take, skip) => ({ type: GET_CATALOG_REQUESTED, take, skip })
 
-function * fetchCatalog () {
+function * fetchCatalog ({ take, skip }) {
   try {
-    const json = yield fetch(queries.getCatalog)
+    console.warn(take, skip)
+    const json = yield fetch(queries.getCatalog(take, skip))
     const response = yield json.json()
-    console.warn(response)
     yield put({ type: GET_CATALOG_SUCCESS, data: response })
   } catch (err) {
     yield put({ type: GET_CATALOG_FAILED, data: err })
@@ -37,7 +37,7 @@ export function * catalogRootSaga () {
 }
 
 const queries = {
-  getCatalog: `${BASE_URL}/catalog/getCatalog?take=10&skip=0`
+  getCatalog: (take, skip) => `${BASE_URL}/catalog/getCatalog?take=${take}&skip=${skip}`
 }
 
 const GET_CATALOG_SUCCESS = 'GET_CATALOG_SUCCESS'

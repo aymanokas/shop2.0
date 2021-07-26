@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MenuItem, TextField, makeStyles, Button, Modal, Typography, Divider, FormControl, RadioGroup, FormLabel, FormControlLabel, Radio } from '@material-ui/core'
 import style from './style'
 import Container from '../Container'
@@ -8,6 +8,8 @@ import Footer from '../Footer'
 import Rating from '@material-ui/lab/Rating'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import ProductCard from '../ProductCard'
+import { getCatalogAction } from '../../pages/Catalog/store'
+import { useDispatch } from 'react-redux'
 const filters = [
   {
     value: 0,
@@ -23,20 +25,29 @@ const filters = [
   }
 ]
 const useStyle = makeStyles(style)
-export default ({ catalog }) => {
+export default ({ catalog, total }) => {
   const { productsStyle, filterStyle, buttonStyle, paper, buttonContainer, productImage, badges, product, discountAmount, sizes, addToCartSection, radioContainer, iconStyle, shopButtonStyle, dividerStyle, meduimRadio, blueRadio, yellowRadio, productDescription, isNew, productControls, productDicountedPrice, productTitle, titleAndPrice, productPrice } = useStyle()
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
+  const [data, setCatalog] = useState(catalog)
+  const dispatch = useDispatch()
+  const [showMore, setShowMore] = useState(9)
   const handleClose = () => {
     setOpen(false)
   }
   const handleOpen = () => {
     setOpen(true)
   }
+  useEffect(() => {
+    JSON.stringify(catalog) !== JSON.stringify(data) && setCatalog([...data, ...catalog])
+  }, [catalog])
+  const handleShowMore = () => {
+    setShowMore(showMore + 9)
+    dispatch(getCatalogAction(9, showMore))
+  }
   const [currency, setCurrency] = useState(0)
   const handleChange = (event) => {
     setCurrency(event.target.value)
   }
-  console.warn(catalog)
   return (
     <>
       <NavBar fixed />
@@ -56,7 +67,7 @@ export default ({ catalog }) => {
           ))}
         </TextField>
         <div className={productsStyle}>
-          {catalog?.map(
+          {data?.map(
             (item, key) => {
               return (
                 <ProductCard item={item} handleOpen={handleOpen} key={key} />
@@ -64,11 +75,12 @@ export default ({ catalog }) => {
             }
           )}
         </div>
-        <div className={buttonContainer}>
-          <Button variant='contained' className={buttonStyle}>
-            Show more
-          </Button>
-        </div>
+        {total !== data.length &&
+          <div className={buttonContainer}>
+            <Button onClick={handleShowMore} variant='contained' className={buttonStyle}>
+              Show more
+            </Button>
+          </div>}
         <Modal
           open={open}
           onClose={handleClose}
